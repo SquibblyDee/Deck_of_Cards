@@ -23,9 +23,19 @@ namespace Deck_of_Cards
             player1.Draw(ref ourDeck);
             player1.Draw(ref ourDeck);
             player1.Draw(ref ourDeck);
+            ////Print the contents of our hand list
+            Console.WriteLine("Our Hand:");
             foreach(var attr in player1.hand)
                 {
-                    Console.WriteLine("Str Value={0} - Value={1} - Suit={2}", attr.stringVal, attr.val, attr.suit);
+                    Console.WriteLine("{0} of {1}", attr.stringVal, attr.suit);
+                }
+            ////Discard a card from out hand
+            Console.WriteLine("We discarded: "+player1.Discard(4));
+            ////Print the contents of our hand list
+            Console.WriteLine("Our Hand:");
+            foreach(var attr in player1.hand)
+                {
+                    Console.WriteLine("{0} of {1}", attr.stringVal, attr.suit);
                 }
 
         }

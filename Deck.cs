@@ -13,7 +13,7 @@ namespace Deck_of_Cards
         public Deck()
         {
             ////Declaring arrays of card suits, string/integer values. (All values needed for our card objects)
-            string[] suits = {"Heart", "Spade", "Club", "Diamond"};
+            string[] suits = {"Hearts", "Spades", "Clubs", "Diamonds"};
             string[] stringValues = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
             int[] integerValues = {1,2,3,4,5,6,7,8,9,10,11,12,13};
             ////Creates a card object for every possible value of each suite
@@ -43,7 +43,7 @@ namespace Deck_of_Cards
         {
             Card returnCard = cards[0];
             cards.RemoveAt(0);
-            Console.WriteLine("DRAWNCARD: {0} {1} {2}", returnCard.stringVal, returnCard.val, returnCard.suit);
+            ////Console.WriteLine("DRAWNCARD: {0} {1} {2}", returnCard.stringVal, returnCard.val, returnCard.suit);
             return returnCard;
         }
 
