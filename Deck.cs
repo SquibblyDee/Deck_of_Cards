@@ -16,7 +16,6 @@ namespace Deck_of_Cards
             string[] suits = {"Heart", "Spade", "Club", "Diamond"};
             string[] stringValues = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
             int[] integerValues = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-
             ////Creates a card object for every possible value of each suite
             for(int i=0; i<suits.Length; i++)
             {
@@ -30,7 +29,7 @@ namespace Deck_of_Cards
 
                     cardsBackup.Add(card);
                 }
-                ////Prints the values of each object (for debug help)
+                ////Prints the values of each object for debug help
                 // foreach(var card in cards)
                 // {
                     // Console.WriteLine("Str Value={0} - Value={1} - Suit={2}", card.stringVal, card.val, card.suit);
