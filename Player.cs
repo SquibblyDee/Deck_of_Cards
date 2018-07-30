@@ -13,6 +13,7 @@ namespace Deck_of_Cards
         public Player(string nme="John")
         {
             name = nme;
+            Console.WriteLine("Player object {0} created.", nme);
         }
 
         ////Give the Player a draw method of which draws a card from a deck, adds it to the player's hand and returns the Card.
@@ -26,14 +27,17 @@ namespace Deck_of_Cards
 
         public Card Discard(int index)
         {
+            ////Verifies the supplied index exists before removing it from our hand and returning the discard card object
             if(index<hand.Count)
             {
                 Card discardedCard = hand[index];
                 hand.RemoveAt(index);
+                Console.WriteLine("Card {0} has been discarded.", index);
                 return discardedCard;
             }
             else
             {
+                Console.WriteLine("Card {0} doesn't exist!", index);
                 return null;
             }
         }

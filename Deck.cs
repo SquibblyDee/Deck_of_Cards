@@ -35,12 +35,13 @@ namespace Deck_of_Cards
                     // Console.WriteLine("Str Value={0} - Value={1} - Suit={2}", card.stringVal, card.val, card.suit);
                 // }
             }
-            Console.WriteLine("Fresh deck of 52 cards created");
+            Console.WriteLine("Fresh deck of 52 cards created.");
         }
 
         ////Give the Deck a deal method that selects the "top-most" card, removes it from the list of cards, and returns the Card.
         public Card Deal()
         {
+            ////Grabs a card, removes it from the list, then returns the card
             Card returnCard = cards[0];
             cards.RemoveAt(0);
             ////Console.WriteLine("DRAWNCARD: {0} {1} {2}", returnCard.stringVal, returnCard.val, returnCard.suit);
@@ -50,6 +51,7 @@ namespace Deck_of_Cards
         ////Give the Deck a reset method that resets the cards property to contain the original 52 cards.
         public void Reset()
         {
+            ////iterates through the cards list and makes it equal to our backed up starting deck
             for(var i=0; i<cardsBackup.Count; i++)
             {
                 if(i >= cards.Count)
@@ -62,12 +64,13 @@ namespace Deck_of_Cards
                 cards.Insert(i, cardsBackup[i]);
                 }
             }
-            Console.WriteLine("Deck has been reset to it's original configuration");
+            Console.WriteLine("Deck has been reset to it's original configuration.");
         }
 
         ////Give the Deck a shuffle method that randomly reorders the deck's cards.
         public void Shuffle()
         {
+            ////Walks through the list and moves each index to a new random index
             Random rand = new Random();
             for(int i=0; i<cards.Count; i++)
             {
