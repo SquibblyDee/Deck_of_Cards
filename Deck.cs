@@ -30,11 +30,12 @@ namespace Deck_of_Cards
                     cardsBackup.Add(card);
                 }
                 ////Prints the values of each object for debug help
-                foreach(var card in cards)
-                {
-                    Console.WriteLine("Str Value={0} - Value={1} - Suit={2}", card.stringVal, card.val, card.suit);
-                }
+                // foreach(var card in cards)
+                // {
+                    // Console.WriteLine("Str Value={0} - Value={1} - Suit={2}", card.stringVal, card.val, card.suit);
+                // }
             }
+            Console.WriteLine("Fresh deck of 52 cards created");
         }
 
         ////Give the Deck a deal method that selects the "top-most" card, removes it from the list of cards, and returns the Card.
@@ -42,6 +43,7 @@ namespace Deck_of_Cards
         {
             Card returnCard = cards[0];
             cards.RemoveAt(0);
+            Console.WriteLine("DRAWNCARD: {0} {1} {2}", returnCard.stringVal, returnCard.val, returnCard.suit);
             return returnCard;
         }
 
@@ -59,18 +61,21 @@ namespace Deck_of_Cards
                 cards.RemoveAt(i);
                 cards.Insert(i, cardsBackup[i]);
                 }
-                
             }
+            Console.WriteLine("Deck has been reset to it's original configuration");
         }
 
         ////Give the Deck a shuffle method that randomly reorders the deck's cards.
         public void Shuffle()
         {
-            Random rand = new Random(cards.Count);
-            foreach(var card in cards)
+            Random rand = new Random();
+            for(int i=0; i<cards.Count; i++)
             {
-
+                Card temp = cards[i];
+                cards.RemoveAt(i);
+                cards.Insert(rand.Next(cards.Count), temp);
             }
+            Console.WriteLine("Shuffling Deck...");
         }
     }
 }
