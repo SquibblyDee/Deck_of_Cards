@@ -15,6 +15,9 @@ namespace Deck_of_Cards
             ////Dealing to ourselves from the Deck
             Card drawnCard = ourDeck.Deal();
             Console.WriteLine("DRAWNCARD: {0} {1} {2}", drawnCard.stringVal, drawnCard.val, drawnCard.suit);
+            ////Resetting our deck back to it's default list
+            ourDeck.Reset();
+            Console.WriteLine("TEST");
         }
     }
 }

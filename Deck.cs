@@ -7,6 +7,8 @@ namespace Deck_of_Cards
     {
         ////Give the Deck class a property called "cards" which is a list of Card objects.
         public List<Card> cards = new List<Card>();
+        ////This list of card objects if for when we need to reset to our original deck
+        public List<Card> cardsBackup = new List<Card>();
 
         public Deck()
         {
@@ -24,6 +26,8 @@ namespace Deck_of_Cards
                     card.val = integerValues[j];
                     card.suit = suits[i];
                     cards.Add(card);
+
+                    cardsBackup.Add(card);
                 }
                 ////Prints the values of each object for debug help
                 foreach(var card in cards)
@@ -40,6 +44,25 @@ namespace Deck_of_Cards
             cards.RemoveAt(0);
             return returnCard;
         }
+
+        ////Give the Deck a reset method that resets the cards property to contain the original 52 cards.
+        public void Reset()
+        {
+            for(var i=0; i<cardsBackup.Count; i++)
+            {
+                if(i >= cards.Count)
+                {
+                    cards.Add(cardsBackup[i]);
+                }
+                else
+                {
+                cards.RemoveAt(i);
+                cards.Insert(i, cardsBackup[i]);
+                }
+                
+            }
+        }
+
         ////Give the Deck a shuffle method that randomly reorders the deck's cards.
         public void Shuffle()
         {
