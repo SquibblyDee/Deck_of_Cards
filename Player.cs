@@ -10,34 +10,34 @@ namespace Deck_of_Cards
         ////Give the Player a hand property that is a List of type Card.
         public List<Card> hand = new List<Card>();
 
-        public Player(string nme="John")
+        public Player(string _name="John")
         {
-            name = nme;
-            Console.WriteLine("Player object {0} created.", nme);
+            name = _name;
+            Console.WriteLine("Player object {0} created.", name);
         }
 
         ////Give the Player a draw method of which draws a card from a deck, adds it to the player's hand and returns the Card.
-        public Card Draw(ref Deck deck)
+        public Card Draw(ref Deck _deck)
         {
             ////This grabs the return from the Deck.Deal() method and returns it's output as our card after adding it to our hand
-            Card ourCard = deck.Deal();
+            Card ourCard = _deck.Deal();
             hand.Add(ourCard);
             return ourCard;
         }
 
-        public Card Discard(int index)
+        public Card Discard(int _index)
         {
             ////Verifies the supplied index exists before removing it from our hand and returning the discard card object
-            if(index<hand.Count)
+            if(_index<hand.Count)
             {
-                Card discardedCard = hand[index];
-                hand.RemoveAt(index);
-                Console.WriteLine("Card {0} has been discarded.", index);
+                Card discardedCard = hand[_index];
+                hand.RemoveAt(_index);
+                Console.WriteLine("Card {0} has been discarded.", _index);
                 return discardedCard;
             }
             else
             {
-                Console.WriteLine("Card {0} doesn't exist!", index);
+                Console.WriteLine("Card {0} doesn't exist!", _index);
                 return null;
             }
         }
