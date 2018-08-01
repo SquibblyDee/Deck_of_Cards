@@ -7,12 +7,14 @@ namespace Deck_of_Cards
     {
         ////Give the Player class a name property.
         public string name;
+        public int stack;
         ////Give the Player a hand property that is a List of type Card.
         public List<Card> hand = new List<Card>();
 
         public Player(string _name="John")
         {
             name = _name;
+            stack = 0;
             Console.WriteLine("Player object {0} created.", name);
         }
 

@@ -25,22 +25,22 @@ namespace Deck_of_Cards
                 AIPlayer.Draw(ref ourDeck);
             }
 
-            // Print the contents of our hand list
-            Console.WriteLine("\nPlayer's Hand:");
-            foreach(var attr in HumanPlayer.hand)
-                {
-                    Console.WriteLine("{0} of {1}", attr.stringVal, attr.suit);
-                }
-
-            // Print the contents of our hand list
-            Console.WriteLine("\nAI's Hand:");
-            foreach(var attr in AIPlayer.hand)
-                {
-                    Console.WriteLine("{0} of {1}", attr.stringVal, attr.suit);
-                }
-
             //start playing
             while(HumanPlayer.hand.Count>0 && AIPlayer.hand.Count>0 && ourDeck.cards.Count>0){
+                // Print the contents of our Human hand list
+                Console.WriteLine("\nPlayer's Hand:");
+                foreach(var attr in HumanPlayer.hand)
+                {
+                    Console.WriteLine("{0} of {1}", attr.stringVal, attr.suit);
+                }
+
+                // Print the contents of our AI hand list
+                Console.WriteLine("\nAI's Hand:");
+                foreach(var attr in AIPlayer.hand)
+                {
+                    Console.WriteLine("{0} of {1}", attr.stringVal, attr.suit);
+                }
+
                 //Human portion of our game logic
                 //ask AI for card
                 Console.WriteLine("Which card would you like to check?");
@@ -57,6 +57,7 @@ namespace Deck_of_Cards
                 if(ValidAsk == false)
                 {
                     Console.WriteLine("You fuckin' cheater. Pick a valid card!");
+                    continue;
                 }
                 else
                 {
@@ -78,6 +79,23 @@ namespace Deck_of_Cards
                     {
                         Console.WriteLine("Go Fish!");
                         HumanPlayer.Draw(ref ourDeck);
+                    }
+                }
+                ////Check player's hand and see if it contains any sets
+                for(int k=0; k<HumanPlayer.hand.Count; k++)
+                {
+                    int count = 1;
+                    int index1 = k;
+                    for(int l=k+1; l<HumanPlayer.hand.Count; l++)
+                    {
+                        if(HumanPlayer.hand[k].stringVal == HumanPlayer.hand[l].stringVal)
+                        {
+                            count++;
+                            if(count == 4)
+                            {
+                                HumanPlayer.stack++;
+                            }
+                        }
                     }
                 }
                 //AI portion of our game logic.
