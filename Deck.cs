@@ -15,17 +15,18 @@ namespace Deck_of_Cards
             ////Declaring arrays of card suits, string/integer values. (All values needed for our card objects)
             string[] suits = {"Hearts", "Spades", "Clubs", "Diamonds"};
             string[] stringValues = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
-            // int integerValues = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+            int[] integerValues = {1,2,3,4,5,6,7,8,9,10,11,12,13};
             ////Creates a card object for every possible value of each suite
             for(int i=0; i<suits.Length; i++)
             {
-                for(int j=1; j<13; j++)
+                for(int j=0; j<stringValues.Length; j++)
                 {
                     Card card = new Card();
                     card.stringVal = stringValues[j];
-                    card.val = j;
+                    card.val = integerValues[j];
                     card.suit = suits[i];
                     cards.Add(card);
+
                     cardsBackup.Add(card);
                 }
                 ////Prints the values of each object for debug help

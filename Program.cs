@@ -8,8 +8,9 @@ namespace Deck_of_Cards
         static void Main(string[] args)
         {
             //Make Players
-            // string PlayerName = Console.ReadLine();
-            string PlayerName = "Stefan";
+            Console.WriteLine("Please enter your name: ");
+            string PlayerName = Console.ReadLine();
+            // string PlayerName = "Matt";
             Player HumanPlayer = new Player(PlayerName);
             Player AIPlayer = new Player("Bender");
 
@@ -33,11 +34,83 @@ namespace Deck_of_Cards
 
             // Print the contents of our hand list
             Console.WriteLine("\nAI's Hand:");
-            foreach(var attr in HumanPlayer.hand)
+            foreach(var attr in AIPlayer.hand)
                 {
                     Console.WriteLine("{0} of {1}", attr.stringVal, attr.suit);
                 }
 
+            //start playing
+            while(HumanPlayer.hand.Count>0 && AIPlayer.hand.Count>0 && ourDeck.cards.Count>0){
+                //Human portion of our game logic
+                //ask AI for card
+                Console.WriteLine("Which card would you like to check?");
+                string Ask = Console.ReadLine();
+                bool ValidAsk = false;
+                //make sure the card is in HumanPlayer's hand.
+                for(int i=0; i<HumanPlayer.hand.Count; i++)
+                {
+                    if(HumanPlayer.hand[i].stringVal==Ask)
+                    {
+                        ValidAsk = true;
+                    }
+                }
+                if(ValidAsk == false)
+                {
+                    Console.WriteLine("You fuckin' cheater. Pick a valid card!");
+                }
+                else
+                {
+                    //check AI's hand for ask card.
+                    Console.WriteLine($"{AIPlayer.name}, do you have any {Ask}'s?");
+                    bool MatchFound = false;
+                    for(int i=0; i<AIPlayer.hand.Count; i++)
+                    {
+                        if(AIPlayer.hand[i].stringVal==Ask)
+                        {
+                            MatchFound = true;
+                            Console.WriteLine($"Great guess {HumanPlayer.name}, here are my {Ask}'s");
+                            HumanPlayer.hand.Add(AIPlayer.hand[i]);
+                            AIPlayer.hand.RemoveAt(i);
+                        }
+                    }
+                    //If no matches, go fish
+                    if(MatchFound == false)
+                    {
+                        Console.WriteLine("Go Fish!");
+                        HumanPlayer.Draw(ref ourDeck);
+                    }
+                }
+                //AI portion of our game logic.
+                //Check the humans hand to see if it has our randomly selected card
+                Random rand = new Random();
+                bool AIMatchFound = false;
+                int AISelectedIndex = rand.Next(AIPlayer.hand.Count);
+                Card SelectedCard = AIPlayer.hand[AISelectedIndex];
+                Console.WriteLine($"{HumanPlayer.name}, do you have any {SelectedCard.stringVal}'s?");
+                for(int j=0; j<HumanPlayer.hand.Count; j++)
+                {
+                    if(HumanPlayer.hand[j].stringVal == SelectedCard.stringVal)
+                    {
+                        AIMatchFound = true;
+                        Console.WriteLine($"Great guess {AIPlayer.name}, here are my {SelectedCard.stringVal}'s");
+                        AIPlayer.hand.Add(HumanPlayer.hand[j]);
+                        HumanPlayer.hand.RemoveAt(j);
+                    }
+                }
+                //If no matches, go fish
+                if(AIMatchFound == false)
+                    {
+                        Console.WriteLine("Go Fish!");
+                        HumanPlayer.Draw(ref ourDeck);
+                    }
+                
+
+
+
+
+
+
+            }
 
             // Console.WriteLine("\nDeck of Cards:");
             // ////Creating a new deck
