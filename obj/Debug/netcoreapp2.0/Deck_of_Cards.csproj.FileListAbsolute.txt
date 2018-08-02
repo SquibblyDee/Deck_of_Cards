@@ -19,3 +19,4 @@ C:\Users\Mandernander\Google Drive\CSharp\Deck_of_Cards\obj\Debug\netcoreapp2.0\
 C:\Users\Mandernander\Google Drive\CSharp\Deck_of_Cards\obj\Debug\netcoreapp2.0\Deck_of_Cards.AssemblyInfo.cs
 C:\Users\Mandernander\Google Drive\CSharp\Deck_of_Cards\obj\Debug\netcoreapp2.0\Deck_of_Cards.dll
 C:\Users\Mandernander\Google Drive\CSharp\Deck_of_Cards\obj\Debug\netcoreapp2.0\Deck_of_Cards.pdb
+C:\Users\S\Google Drive\CSharp\Deck_of_Cards\obj\Debug\netcoreapp2.0\Deck_of_Cards.csprojResolveAssemblyReference.cache

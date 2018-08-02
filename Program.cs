@@ -48,16 +48,19 @@ namespace Deck_of_Cards
             Console.WriteLine("  GGGGGGGGGGGGGGGG      OOOOOOOOOOOOOOOO                     \\_,'");
             //Make Players
             Console.WriteLine("");
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine("Please enter your name: ");
             string PlayerName = Console.ReadLine();
             // string PlayerName = "Matt";
             Player HumanPlayer = new Player(PlayerName);
+            System.Threading.Thread.Sleep(1000);
             Player AIPlayer = new Player("Bender");
-
+            System.Threading.Thread.Sleep(1000);
             //Make and shuffle deck
             Deck ourDeck = new Deck();
+            System.Threading.Thread.Sleep(1000);
             ourDeck.Shuffle();
-
+            System.Threading.Thread.Sleep(1000);
             //Deal Cards
             for(var i=0; i<7; i++)
             {
@@ -190,6 +193,7 @@ namespace Deck_of_Cards
                         }
                     }
                     //If no matches, go fish
+                    System.Threading.Thread.Sleep(1000);
                     if(MatchFound == false)
                     {
                         Console.WriteLine("Go Fish!");
@@ -199,6 +203,7 @@ namespace Deck_of_Cards
                     {
                         Console.WriteLine($"Great guess {HumanPlayer.name}, here are my {Ask}'s");
                     }
+                    System.Threading.Thread.Sleep(1000);
                 }
                 ////Check player's hand and see if it contains any sets
                 for(int k=0; k<HumanPlayer.hand.Count; k++)
@@ -222,7 +227,7 @@ namespace Deck_of_Cards
                     }
                 }
                 //Human win condition
-                if(HumanPlayer.stack == 7)
+                if(HumanPlayer.stack == 2)
                 {
                     Console.WriteLine("YOU WIN!");
                     return;
@@ -283,17 +288,22 @@ namespace Deck_of_Cards
                     if(HumanPlayer.hand[j].stringVal == SelectedstringVal)
                     {
                         AIMatchFound = true;
-                        Console.WriteLine($"Great guess {AIPlayer.name}, here are my {SelectedstringVal}'s");
                         AIPlayer.hand.Add(HumanPlayer.hand[j]);
                         HumanPlayer.hand.RemoveAt(j);
                     }
                 }
                 //If no matches, go fish
+                System.Threading.Thread.Sleep(1000);
                 if(AIMatchFound == false)
                 {
                     Console.WriteLine("Go Fish!");
                     AIPlayer.Draw(ref ourDeck);
                 }
+                else
+                {
+                    Console.WriteLine($"Great guess {AIPlayer.name}, here are my {SelectedstringVal}'s");
+                }
+                System.Threading.Thread.Sleep(1000);
                 //check for AI sets
                 for(int k=0; k<AIPlayer.hand.Count; k++)
                 {
@@ -317,7 +327,7 @@ namespace Deck_of_Cards
                 }
 
                 //AI Win Condition
-                if(AIPlayer.stack == 7)
+                if(AIPlayer.stack == 2)
                 {
                     Console.WriteLine("Wow you lost... You suck!");
                     return;
